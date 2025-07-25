@@ -2,7 +2,7 @@
   "name": "forgot-content-type-json-header",
   "displayName": "Forgot Content Type JSON Header",
   "description": "Warns when using JSON.stringify() without Content-Type header in fetch calls",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.74.0"
   },
