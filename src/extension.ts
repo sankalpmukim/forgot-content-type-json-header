@@ -23,6 +23,13 @@ export function activate(context: vscode.ExtensionContext) {
       checkDocument(editor.document);
     }
   });
+
+  // Clean up diagnostics when files are deleted
+  vscode.workspace.onDidDeleteFiles((event) => {
+    event.files.forEach(uri => {
+      diagnosticCollection.delete(uri);
+    });
+  });
 }
 
 function checkDocument(document: vscode.TextDocument) {
