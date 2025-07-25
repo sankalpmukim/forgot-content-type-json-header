@@ -144,7 +144,7 @@ suite("Diagnostics Tests", () => {
   });
 
   suite("Integration Tests", () => {
-    test.only("should handle complex real-world fetch call", () => {
+    test("should handle complex real-world fetch call", () => {
       const code = `async function createUser(userData) {
         const response = await fetch("/api/users", {
           method: "POST",
