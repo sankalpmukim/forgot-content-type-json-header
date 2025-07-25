@@ -1,71 +1,68 @@
-# forgot-content-type-json-header README
+# Forgot Content Type JSON Header
 
-This is the README for your extension "forgot-content-type-json-header". After writing up a brief description, we recommend including the following sections.
+A Visual Studio Code extension that helps you avoid a common mistake when using the `fetch` API: forgetting to set the `"Content-Type": "application/json"` header when sending JSON data in the request body.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Automatic detection**: Scans your JavaScript/TypeScript files for `fetch` calls that use `body: JSON.stringify(...)` but are missing the correct Content-Type header.
+- **Real-time feedback**: Shows a yellow squiggly line under the problematic `JSON.stringify` call and a warning message.
+- **Native integration**: Uses VS Code's Problems panel and diagnostics system for seamless feedback.
 
-For example if there is an image subfolder under your extension project workspace:
+## Example
 
-\!\[feature X\]\(images/feature-x.png\)
+```js
+// ❌ This will show a warning
+fetch("/api/data", {
+  method: "POST",
+  body: JSON.stringify(data), // <- squiggly line here
+});
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+// ✅ This won't show a warning
+fetch("/api/data", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+});
+```
+
+## How It Works
+
+- **Activates** for JavaScript, TypeScript, and their React variants.
+- **Monitors** your code as you type or open files.
+- **Detects** `fetch` calls with a JSON body but missing the correct Content-Type header.
+- **Warns** you with a squiggly line and a message: `Using JSON.stringify() without "Content-Type": "application/json" header`.
+
+## Supported Languages
+
+- JavaScript (`.js`)
+- TypeScript (`.ts`)
+- JavaScript React (`.jsx`)
+- TypeScript React (`.tsx`)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code v1.102.0 or newer
 
-## Extension Settings
+## Installation
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+1. Install the extension from the VS Code Marketplace or your preferred method.
+2. Open or edit any supported file.
+3. Warnings will appear automatically as you type or open files—no configuration needed.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Only works for direct `fetch` calls with object options.
+- May not detect all dynamic or indirect usages of `fetch`.
+- Does not support languages other than JavaScript/TypeScript and their React variants.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release: Detects missing `Content-Type: application/json` header in `fetch` calls with JSON bodies.
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Enjoy safer, more reliable API calls!**
