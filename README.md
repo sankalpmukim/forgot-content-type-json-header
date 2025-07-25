@@ -43,7 +43,7 @@ fetch("/api/data", {
 
 ## Requirements
 
-- Visual Studio Code v1.102.0 or newer
+- Visual Studio Code v1.74.0 or newer
 
 ## Installation
 

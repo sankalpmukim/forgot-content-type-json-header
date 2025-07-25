@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [0.0.2] - 2025-07-25
 
 ### Added
+
 - Automatic diagnostic cleanup when files are deleted to prevent stale entries in Problems panel
 - Comprehensive test suite for extension event listeners (30 tests total)
 - Test coverage for file deletion cleanup functionality
@@ -16,16 +17,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Test coverage for diagnostic collection management
 
 ### Changed
-- Improved VS Code compatibility by supporting older engine versions (^1.102.0)
+
+- Improved VS Code compatibility by supporting older engine versions (^1.74.0)
 - Updated dependencies and lock file for better stability
 
 ### Fixed
+
 - Extension now properly cleans up diagnostics when files with warnings are deleted
 - Prevents accumulation of stale diagnostic entries
 
 ## [0.0.1] - 2025-07-25
 
 ### Added
+
 - Initial release of VS Code extension
 - Real-time detection of `fetch()` calls using `JSON.stringify()` without proper `Content-Type: application/json` header
 - Support for JavaScript, TypeScript, JSX, and TSX files
